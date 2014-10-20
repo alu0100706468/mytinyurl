@@ -1,14 +1,12 @@
-desc "run the http server"
-task :default do
-  sh "ruby app.rb"
+desc "Run server"
+    task :default => :use_keys do
+      sh "rackup"
 end
-
-desc "run the server via rackup"
-task :rackup do
-  sh "rackup"
+desc "Save config.yml out of the CVS"
+task :keep_secrets do
+  sh "cp config/config_template.yml config/config.yml "
 end
-
-desc "run tests"
-task :test do
-    sh "ruby test/test.rb"
+desc "Use the filled client_secrets"
+    task :use_keys do
+      sh "cp config/config_filled.yml config/config.yml"
 end

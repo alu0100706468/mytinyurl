@@ -1,12 +1,17 @@
 #!/usr/bin/env ruby
-require 'rubygems'
+require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/reloader' if development?
-require 'haml'
+require 'pry'
+require 'omniauth-oauth2'
+require 'omniauth-github'
+require 'omniauth-google-oauth2'
+require 'omniauth-facebook'
 require 'uri'
-require 'pp'
-#require 'socket'
 require 'data_mapper'
+require 'erubis'
+require 'pp'
+require 'haml'
 
 DataMapper.setup( :default, ENV['DATABASE_URL'] || 
                             "sqlite3://#{Dir.pwd}/my_shortened_urls.db" )
@@ -36,6 +41,15 @@ helpers do
 		@current_user ||= User.get(session[:user_id]) if session[:user_id]
 	end
 end
+
+get '/' do
+	if current_user
+		haml :index
+ 	else
+		haml :index
+	end
+end
+
 
 get '/auth/:name/callback' do
 	@auth = request.env["omniauth.auth"]
@@ -71,4 +85,52 @@ get path do
 	session.clear
 	redirect '/'
 	end
+end
+
+
+post '/' do
+
+	
+		puts "inside post '/': #{params}"
+		uri = URI::parse(params[:url])
+		pers = params[:personal]
+
+		if uri.is_a? URI::HTTP or uri.is_a? URI::HTTPS then
+			if current_user
+				begin
+					if pers == ""
+						@short_url = ShortenedUrl.first_or_create(:uid => current_user.id, :url => params[:url])
+					end
+					if pers != ""
+						@short_url = ShortenedUrl.first_or_create(:uid => current_user.id, :url => params[:url], :url2 =>params[:personal])	
+					end
+				rescue Exception => e
+					puts "EXCEPTION!!!!!!!!!!!!!!!!!!!"
+					pp @short_url
+					puts e.message
+				end
+			end
+			
+			if !current_user
+				begin
+					if pers == ""
+						@short_url = ShortenedUrl.first_or_create(:uid => '0', :url => params[:url])
+					end
+					if pers != ""
+						@short_url = ShortenedUrl.first_or_create(:uid => '0' , :url => params[:url], :url2 =>params[:personal])	
+					end
+				rescue Exception => e
+					puts "EXCEPTION!!!!!!!!!!!!!!!!!!!"
+					pp @short_url
+					puts e.message
+				end
+
+			end
+		else
+			logger.info "Error! <#{params[:url]}> is not a valid URL"
+		end
+
+
+	
+	redirect '/'
 end
