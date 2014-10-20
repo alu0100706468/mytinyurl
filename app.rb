@@ -44,10 +44,12 @@ end
 
 get '/' do
 	if current_user
-		haml :index
+		
  	else
-		haml :index
+		
 	end
+
+	haml :index
 end
 
 
@@ -61,7 +63,7 @@ get '/auth/:name/callback' do
 	:imagen => @auth["info"]["image"],
 	:created_at => Time.now	})
 	
-	session[:user_id] = @user.id 
+	session[:user_id] = @user.id
 	redirect '/'
 end
 
