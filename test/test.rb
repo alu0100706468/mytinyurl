@@ -31,7 +31,7 @@ describe "My tiny url" do
 
 	before :all do
 		@consult = ShortenedUrl.first_or_create(:uid => '0', :url => "http://www.google.es")
-		@consult1 = ShortenedUrl.last(:uid=> '0')
+		@consult1 = ShortenedUrl.first(:uid=> '0')
 		@pag = "http://www.google.es"
 	end
 
