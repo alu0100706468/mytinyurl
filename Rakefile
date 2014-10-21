@@ -1,5 +1,11 @@
+task(:default) do
+    require_relative 'test/test'
+end
+desc "run the tests"
+    task :test => :default
+
 desc "Run server"
-    task :default => :use_keys do
+    task :server => :use_keys do
       sh "rackup"
 end
 desc "Save config.yml out of the CVS"

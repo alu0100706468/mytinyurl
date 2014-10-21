@@ -5,7 +5,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
-gem 'pry'
+gem 'pry' 
 gem 'erubis'
 gem 'data_mapper'
 gem 'dm-sqlite-adapter'
@@ -18,3 +18,7 @@ group :development do
   gem 'sinatra-contrib'
 end
 
+group :test do
+    gem "rack-test"
+    gem "rake"
+end
