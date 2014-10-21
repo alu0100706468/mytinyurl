@@ -140,7 +140,7 @@ post '/' do
 			logger.info "Error! <#{params[:url]}> is not a valid URL"
 		end
 
-
+		@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
 		erb :index
 
 	
