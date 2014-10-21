@@ -119,9 +119,7 @@ post '/' do
 					pp @short_url
 					puts e.message
 				end
-			end
-			
-			if !current_user
+			else
 				begin
 					if pers == ""
 						@short_url = ShortenedUrl.first_or_create(:uid => '0', :url => params[:url])
