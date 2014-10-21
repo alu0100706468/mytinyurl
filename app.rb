@@ -119,6 +119,8 @@ post '/' do
 					pp @short_url
 					puts e.message
 				end
+				@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
+
 			else
 				begin
 					if pers == ""
@@ -138,7 +140,6 @@ post '/' do
 			logger.info "Error! <#{params[:url]}> is not a valid URL"
 		end
 
-		@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
 		erb :index
 
 	
