@@ -44,10 +44,11 @@ end
 
 get '/' do
 	if current_user
-		haml :index
- 	else
-		haml :index
+		@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
 	end
+	
+	erb :index
+	
 end
 
 
@@ -131,6 +132,7 @@ post '/' do
 		end
 
 
+		erb :index
+
 	
-	redirect '/'
 end
