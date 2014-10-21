@@ -1,0 +1,35 @@
+body{
+	background-image: url(/img/fondo.jpg);
+}
+
+#cabecera{ 
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-right: 15px;
+  	padding-left: 50px;
+	height: 100px;
+	font-family: Verdana;
+	background-color: #363636;
+	color: white;
+
+	background-image: url("/img/logo.png");
+	background-repeat: no-repeat;
+}
+
+.container{
+	background-color: white;
+}
+
+#cuerpo{
+	background-color: #f7f7f9;
+	padding-top: 2%;
+	margin-left:20%;
+	margin-right:20%;
+	height: 25%;
+	text-align: center;
+}
+
+#input{
+	padding-left: 23%;
+	padding-right: 23%;
+}
