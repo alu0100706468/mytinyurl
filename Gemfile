@@ -17,3 +17,4 @@ gem 'haml'
 group :development do
   gem 'sinatra-contrib'
 end
+
