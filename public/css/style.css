@@ -2,7 +2,8 @@ body{
 	background-image: url(/img/fondo.jpg);
 }
 
-#cabecera{ 
+#cabecera{
+	text-align: right;
 	padding-top:10px;
 	padding-bottom:10px;
 	padding-right: 15px;
