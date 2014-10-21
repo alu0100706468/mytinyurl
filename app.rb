@@ -66,7 +66,6 @@ get '/auth/:name/callback' do
 	@user = User.first_or_create({ :uid => @auth["uid"]}, {
 	:uid => @auth["uid"],
 	:name => @auth["info"]["name"],
-	:nickname => @auth["info"]["nickname"],
 	:email => @auth["info"]["email"],
 	:imagen => @auth["info"]["image"],
 	:created_at => Time.now	})
