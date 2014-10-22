@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			Tutorial:: My Tiny Url
+		</title>
+
+		<link rel="icon" type="image/png" href="public/img/icon.png"/>
+
+   		<link href="public/css/bootstrap.min.css" rel="stylesheet">
+		<link href="public/css/bootstrap.css" rel="stylesheet">
+		<link href="public/css/style3.css" rel="stylesheet">
+	    <!-- Custom styles for this template -->
+	    <link href="public/css/jumbotron.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<img class="img-responsive img-tt" src="public/img/icon.png" alt="logo"> 
+				</div>
+				
+			</div>
+    	</div>
+
+    	<div class="jumbotron">
+      		<div class=" my container">
+				<h1 class="sub">
+					Acortador de Urls
+				</h1>
+				<p class="sub" >
+					Sistemas y Tecnologías web
+				</p>
+			</div>
+    	</div>
+
+		
+		<div class="container main">
+    		<div class="row">
+		
+				<h2 id="objetivo">
+					Objetivo
+				</h2>
+				<p>
+					Crear una aplicación que permita acortar urls, donde el usuario podrá proporcionar un nombre personalizado para la url deseada.
+				</p>
+				<p>
+					También dispondrá de una parte de usuarios logeados, donde se podrá ver todas las urls acortadas con anterioridad.
+				</p>
+				
+				<h2 id="funcionamiento">
+					Funcionamiento
+				</h2>
+				
+				<p>
+					Hay dos formas posibles de ver el funcionamiento de la aplicación, una mediante la web, gracias a Heroku, y otra desde local.
+				</p>
+				<ol>
+					<li class="apt">
+						<p class="subtit">
+							Visualización en Heroku
+						</p>
+						<p> 
+							Para poder ver la aplicación en dicha plataforma, haz click <a href="http://my-tiny-url.herokuapp.com">aquí</a>. Una vez ahí acorta tu url, o si quieres guardarlas ¡registrate!, lo podrás hacer mediante Google, Github o Facebook.
+						</p>
+					</li>
+
+					<li class="apt">
+						<p class="subtit">Visualización en local</p>
+						<p> 
+							Primero se ha de clonar el repositorio de github <a href="https://github.com/alu0100706468/mytinyurl.git">mytinyurl</a>, de la siguiente forma: 
+						</p>
+						<pre><code class="lang-sh"> user@ubuntu-hp:~$ git clone git@github.com:alu0100706468/mytinyurl.git
+						</code></pre>
+						
+						<p> 
+							Una vez clonado el repositorio, y situado en el directorio, modifique el archivo config_filled.yml con sus claves(recomendado). Y a continuación ejecuta bundler:
+						</p>
+						<pre><code class="lang-sh"> user@ubuntu-hp:~/mytinyur$ bundle install
+						</code></pre>
+						
+						<p> 
+							Una vez hecho todo lo anterior, procede a ejecutar <em>rake server</em>, y por defecto se empezará a ejecutar.
+						</p>
+						<p> 
+							Una vez en ejecución, abre el navegador y escribe en la barra de direcciones <em>localhost:9292</em> y accederás a la web de la aplicación:
+						</p>
+						<p> 
+							<img class="img-responsive myimg img-rounded"  src="https://raw.githubusercontent.com/alu0100706468/mytinyurl/master/public/img/ejemplo.png" alt="ejemplo navegador">
+						</p>
+						<p> 
+							Y ya, sólo has de dar autorizacion mediante Google, Facebook o Github y podrás ver el resultado.
+						</p>
+					</li>
+				</ol>
+
+
+			</div> <!-- fin row-->
+		</div><!--fin container-->
+
+		<div id="footer">
+			<div class="container">
+				<p class="text-muted">
+					<a href="https://alu0100700435.github.io/" target="_blank">alu0100700435</a> & <a href="https://alu0100706468.github.io/" target="_blank">alu0100706468</a>| Copyright 2011-2014. All rights reserved.
+				</p>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<script src="public/bootstrap.min.js"></script>
+
+	</body>
+</html>
