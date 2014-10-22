@@ -1,0 +1,92 @@
+!!!
+%html{:lang => "es"}
+  %head
+    %meta{:charset => "utf-8"}
+      %link{:href => "css/bootstrap.min.css", :rel => "stylesheet"}
+        %link{:href => "css/bootstrap.css", :rel => "stylesheet"}
+          %link{:href => "/css/style.css", :rel => "stylesheet"}
+            %title MyTinyURL
+            %link{:href => "/img/icon.png", :rel => "icon", :type => "image/png"}/
+  %body
+    .container
+      #cabecera.main.col-xs-12.col-sm-12.col-lg-12
+        - if !current_user
+          .iconos
+            %a{:href => "/sign_facebook"}
+              %img{:height => "35px", :src => "/img/FB.png", :width => "35px"}/
+            %a{:href => "/sign_github"}
+              %img{:height => "35px", :src => "/img/GH.png", :width => "35px"}/
+            %a{:href => "/sign_google"}
+              %img{:height => "30px", :src => "/img/G.png", :width => "30px"}/
+        - else
+          %div
+            %img.img-responsive.img-circle.foto{:src => current_user.imagen}
+              %br
+                %p.col-xs-12.col-sm-12.col-lg-12
+                  Hola, #{current_user.name} -
+                  %a{:href => "/sign_out"} Cerrar Sesión
+      %br
+        %br
+          #cuerpo.header.col-xs-12.col-sm-8.col-lg-8.col-sm-offset-2.col-lg-offset-2
+            %h3
+              %span.glyphicon.glyphicon-send
+            %h3 Introduzca una URL
+            %form.form-inline{:action => "/", :method => "post", :role => "form"}
+              #input.input-group.col-lg-offset-2.col-sm-offset-2.col-sm-8.col-xs-12.col-lg-8
+                %span.input-group-addon URL
+                %input#myurl.form-control{:accesskey => "s", :autofocus => "", :name => "url", :placeholder => "http://www.ejemplo.com", :type => "text"}
+              %br
+                .input-group.col-lg-offset-4.col-sm-offset-4.col-sm-4.col-xs-12.col-lg-4
+                  %input#pers.form-control{:accesskey => "s", :autofocus => "", :name => "personal", :placeholder => "URL Personalizada", :type => "text"}
+                %br
+                  %button.btn.btn-default.col-lg-offset-5.col-sm-offset-5.col-sm-2.col-xs-12.col-lg-2{:type => "submit", :value => "Shorten"} Enviar
+            %br
+              - if @short_url != nil
+                #urls.col-sm-12.col-xs-12.col-lg-12
+                  - if @short_url.url2 != nil
+                    %p.short
+                      %strong URL corta:
+                      %a{:href => "/#{@short_url.url2}"}
+                        my-tiny-url.herokuapp.com/#{@short_url.url2}
+                  - else
+                    %p.short
+                      %strong URL corta:
+                      %a{:href => "/#{@short_url.id.to_s(Base)}"}
+                        my-tiny-url.herokuapp.com/#{@short_url.id.to_s(Base)}
+              %br
+                %br
+                  %br
+                    - if current_user
+                      #input.col-xs-12.col-sm-8.col-lg-8.col-sm-offset-2.col-lg-offset-2
+                        #accordion.panel-group
+                          .panel.panel-default
+                            .panel-heading
+                              %h4.panel-title
+                                %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+                                  URLs del Usuario
+                            #collapseOne.panel-collapse.collapse
+                              .panel-body
+                                %ol
+                                  - if @list != nil
+                                    - @list.each do |url|
+                                      - if url.url2 != nil
+                                        %li
+                                          %a{:href => "/#{url.url2}"}
+                                            my-tiny-url.herokuapp.com/#{url.url2}
+                                          → #{url.url}
+                                          %br
+                                            %br                                       - else
+                                        %li
+                                          %a{:href => "/#{url.id.to_s(Base)}"}
+                                            my-tiny-url.herokuapp.com/#{url.id.to_s(Base)}
+                                          → #{url.url}
+                                          %br
+                                            %br     .footer.col-xs-12.col-sm-12.col-lg-12
+      .container
+        %p.text-muted
+          %a{:href => "https://alu0100700435.github.io/", :target => "_blank"} alu0100700435
+          \&
+          %a{:href => "https://alu0100706468.github.io/", :target => "_blank"} alu0100706468
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"}
+    %script{:src => "/js/bootstrap.min.js"}
+    %script{:src => "/js/bootstrap.js"}
