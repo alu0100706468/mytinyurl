@@ -15,7 +15,7 @@
 		
 		<div class="container">
 			<div id="cabecera">
-				<br><br>
+				
 				<% if !current_user %>
 				<p>
 					<a href="/sign_facebook"><img src="/img/FB.png" width="35px" height="35px"></a>
@@ -24,6 +24,9 @@
 				</p>
 				<%else%>
 				<p>
+					<img class="img-circle foto" src="<%= current_user.imagen %>"> <br>
+					Hola <%= current_user.name %>
+
 					<a href="/sign_out">Cerrar Sesión</a>
 					
 				</p>
@@ -75,7 +78,7 @@
 					        </a>
 					      </h4>
 					    </div>
-					    <div id="collapseOne" class="panel-collapse collapse in">
+					    <div id="collapseOne" class="panel-collapse collapse">
 					      <div class="panel-body">
 					        <ol>
 					        	<% if @list != nil %>
