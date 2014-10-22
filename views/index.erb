@@ -63,7 +63,7 @@
 				<br>
 				<% if @short_url != nil%>
 					<div class="col-sm-12 col-xs-12 col-lg-12" id="urls">					
-						<% if @short_url.url2 != ""   %>
+						<% if @short_url.url2 != nil  %>
 							<p class ="short"> <strong>URL corta: </strong><a href="/<%= @short_url.url2%>"> my-tiny-url.herokuapp.com/<%= @short_url.url2%> </a> </p>
 						<% else %>
 							<p class ="short"> <strong>URL corta: </strong><a href="/<%= @short_url.id.to_s(Base)%>"> my-tiny-url.herokuapp.com/<%= @short_url.id.to_s(Base)%> </a> </p>
@@ -88,7 +88,7 @@
 					        <ol>
 					        	<% if @list != nil %>
 									<% @list.each do |url| %>
-										<% if url.url2 != ""   %>
+										<% if url.url2 != nil  %>
 											<li><a href="/<%=url.url2%>">my-tiny-url.herokuapp.com/<%= url.url2%></a> → <%= url.url %>  <br><br> </li>
 										<%else%>
 											<li><a href="/<%= url.id.to_s(Base)%>">my-tiny-url.herokuapp.com/<%=url.id.to_s(Base)%></a> → <%= url.url %>  <br><br> </li>
