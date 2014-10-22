@@ -1,7 +1,4 @@
 
-body{
-background-color: #ececec;
-}
 
 #cabecera{
 	text-align: right;
@@ -12,15 +9,16 @@ background-color: #ececec;
 	height: 100px;
 	font-family: Verdana;
 	background-color: #363636;
-	color: white;
-
-	
+	color: white;	
 	background-image: url("/img/logo.png");
 	background-repeat: no-repeat;
 }
 
 #cabecera a{
 	color: white;
+}
+.iconos{
+	margin-top: 2%;
 }
 
 .foto {
@@ -30,38 +28,46 @@ background-color: #ececec;
 
 .container{
 	background-color: white;
-	box-shadow: 0px 2px 20px 5px #999;
 	height: 100%;
+	width: 100%;	
 
 }
 
 #cuerpo{
-	background-color: #f7f7f9;
-	padding-top: 2%;
-	padding-bottom: 2%;
-	margin-left:20%;
-	margin-right:20%;
+	background-color: #f7f7f9;	
+	margin-top: 5%;
 	margin-bottom: 3%;
 	text-align: center;
 }
 
-#input{
-	padding-left: 23%;
-	padding-right: 23%;
-	text-align: left;
-}
+
 
 #urls{
 	padding-top: 2%;
 }
 
-#pie{
-	background-color: #363636;
+
+
+.text-muted{
+	padding-top: 13px;
 	text-align: center;
-	font-style: italic;
-	font-size: 0.9em;
-	color: white;
-	padding-top: 0.25%;
-	padding-bottom: 0.25%;
-	margin-bottom: 0.5%;
+}
+
+
+
+.footer {
+    bottom: 0;
+    height: 60px;
+    position: relative;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.footer p{
+	text-align: center;
+	margin: 10px 0 10px;
+}
+
+.short{
+	margin-bottom: 3%;
 }
