@@ -84,7 +84,7 @@
 					        <ol>
 					        	<% if @list != nil %>
 									<% @list.each do |url| %>
-										<% if @list.url2 != "" %>
+										<% if @list.url2 != nil   %>
 											<li><a href="/<%=url.url2%>">my-tiny-url.herokuapp.com/<%= url.url2%></a> → <%= url.url %>  <br><br> </li>
 										<%else%>
 											<li><a href="/<%= url.id.to_s(Base)%>">my-tiny-url.herokuapp.com/<%=url.id.to_s(Base)%></a> → <%= url.url %>  <br><br> </li>
