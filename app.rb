@@ -56,7 +56,7 @@ get '/' do
 		@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
 	end
 	
-	erb :index
+	haml :index
 
 end
 
@@ -145,7 +145,7 @@ post '/' do
 			logger.info "Error! <#{params[:url]}> is not a valid URL"
 		end
 
-		erb :index
+		haml :index
 
 end
 
@@ -162,5 +162,5 @@ get '/:shortened' do
 end
 
 error do
-	erb :index
+	haml :index
 end
