@@ -63,7 +63,11 @@
 				<br>
 				<% if @short_url != nil%>
 					<div class="col-sm-12 col-xs-12 col-lg-12" id="urls">					
-						<p class ="short"> <strong>URL corta: </strong><a href="/<%= @short_url.id.to_s(Base)%>"> my-tiny-url.herokuapp.com/<%= @short_url.id.to_s(Base)%> </a> </p>
+						<% if @short_url.url2 != ""   %>
+							<p class ="short"> <strong>URL corta: </strong><a href="/<%= @short_url.url2%>"> my-tiny-url.herokuapp.com/<%= @short_url.url2%> </a> </p>
+						<% else %>
+							<p class ="short"> <strong>URL corta: </strong><a href="/<%= @short_url.id.to_s(Base)%>"> my-tiny-url.herokuapp.com/<%= @short_url.id.to_s(Base)%> </a> </p>
+						<%end>
 					</div>	
 				<%end%>
 
