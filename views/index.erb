@@ -15,13 +15,26 @@
 		
 		<div class="container">
 			<div id="cabecera">
+				
+				<% if !current_user %>
+				<p>
+					<a href="/sign_facebook"><img src="/img/FB.png" width="35px" height="35px"></a>
+					<a href="/sign_github"><img src="/img/GH.png" width="35px" height="35px"></a> 
+					<a href="/sign_google"><img src="/img/G.png" width="30px" height="30px"></a>
+				</p>
+				<%else%>
+				<p>
+					<img class="img-circle foto" src="<%= current_user.imagen %>"> <br>
+					Hola, <%= current_user.name %> - 
+
+					<a href="/sign_out">Cerrar Sesión</a>
+					
+				</p>
+				<%end%>
+
+
 			</div>
 
-			<p>
-				<a href="/sign_facebook"><img src="/img/FB.png" width="35px" height="35px"></a>
-				<a href="/sign_github"><img src="/img/GH.png" width="35px" height="35px"></a> 
-				<a href="/sign_google"><img src="/img/G.png" width="30px" height="30px"></a>
-			</p>
 			<br><br>
 
 			<div id="cuerpo">
@@ -46,11 +59,11 @@
 					<button type="submit" value="Shorten" class="btn btn-default col-lg-offset-5 col-sm-offset-5 col-sm-2 col-xs-12 col-lg-2">Enviar</button>
 
 				</form>
-
+				<br>
 				<% if @short_url != nil%>
-												
-					<%= @short_url.url %> - <a href="/<%= @short_url.id.to_s(Base)%>"><%= @short_url.id.to_s(Base)%> </a> 
-					
+					<div class="col-sm-12 col-xs-12 col-lg-12" id="urls">					
+						<p><%= @short_url.url %> - <a href="/<%= @short_url.id.to_s(Base)%>"><%= @short_url.id.to_s(Base)%> </a> </p>
+					</div>	
 				<%end%>
 
 				<br><br><br>
@@ -65,11 +78,13 @@
 					        </a>
 					      </h4>
 					    </div>
-					    <div id="collapseOne" class="panel-collapse collapse in">
+					    <div id="collapseOne" class="panel-collapse collapse">
 					      <div class="panel-body">
 					        <ol>
-								<% @list.each do |url| %>
-								<li> <%= url.url %> - <a href="/<%= url.id.to_s(Base)%>"><%= url.id.to_s(Base)%> </a> </li>
+					        	<% if @list != nil %>
+									<% @list.each do |url| %>
+									<li> <%= url.url %> → <a href="/<%= url.id.to_s(Base)%>"><%= url.id.to_s(Base)%> </a> <br><br> </li>
+									<%end%>
 								<%end%>
 							</ol>
 					      </div>
@@ -79,8 +94,10 @@
 				</div>
 				<% end %>
 
-				<br><br><br><br>
+				
 			</div>
+
+			<div id="pie">Raquel Álvarez Hernández - Sergio B. Miguel Delgado</div>
 		</div>	
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

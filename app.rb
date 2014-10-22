@@ -114,6 +114,8 @@ post '/' do
 					if pers != ""
 						@short_url = ShortenedUrl.first_or_create(:uid => current_user.id, :url => params[:url], :url2 =>params[:personal])	
 					end
+
+					@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
 				rescue Exception => e
 					puts "EXCEPTION!!!!!!!!!!!!!!!!!!!"
 					pp @short_url
@@ -129,18 +131,22 @@ post '/' do
 					if pers != ""
 						@short_url = ShortenedUrl.first_or_create(:uid => '0' , :url => params[:url], :url2 =>params[:personal])	
 					end
+
+					#@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
+
 				rescue Exception => e
 					puts "EXCEPTION!!!!!!!!!!!!!!!!!!!"
 					pp @short_url
 					puts e.message
 				end
 
+
 			end
 		else
 			logger.info "Error! <#{params[:url]}> is not a valid URL"
 		end
 
-
+		
 		erb :index
 
 	
