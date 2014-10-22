@@ -131,7 +131,6 @@ post '/' do
 						@short_url = ShortenedUrl.first_or_create(:uid => '0' , :url => params[:url], :url2 =>params[:personal])	
 					end
 
-					#@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
 
 				rescue Exception => e
 					puts "EXCEPTION!!!!!!!!!!!!!!!!!!!"
