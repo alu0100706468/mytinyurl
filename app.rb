@@ -149,17 +149,7 @@ post '/' do
 
 end
 
-get '/:shortened' do
-	puts "inside get '/:shortened': #{params}"
 
-	short_url = ShortenedUrl.first(:id => params[:shortened].to_i(Base))
-
-	if short_url == nil
-		short_url = ShortenedUrl.first(:url2 => params[:shortened])
-	end
-
-	redirect short_url.url, 301
-end
 
 error do
 	haml :index
