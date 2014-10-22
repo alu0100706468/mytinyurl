@@ -30,7 +30,7 @@ DataMapper.auto_upgrade!
 describe "My tiny url" do 
 
 	before :all do
-		@consult = ShortenedUrl.first_or_create(:uid => '0', :url => "http://www.google.es", :url2 =>google)
+		@consult = ShortenedUrl.first_or_create(:uid => '0', :url => "http://www.google.es", :url2 =>'google')
 		@consult1 = ShortenedUrl.first(:uid=> '0')
 		@pag = "http://www.google.es"
 		@pagerror = "http://www.facebook.com"
@@ -47,16 +47,11 @@ describe "My tiny url" do
 	end
 
 	it "Deberia devolver una url erronea" do
-		refute @pagerror, @consult.url
+		refute_equal @pagerror, @consult.url
 	end
 
 	it "Deberia devolver un error ya que ese campo no acepta URLs" do
-		refute @pag, @consult.url2
+		refute_equal @pag, @consult.url2
 	end
-
-	it "Debería existir un campo para introducir una URL" do
-        get '/'
-            assert last_response.body.include?("Introduzca una URL")
-    end
 	
 end
