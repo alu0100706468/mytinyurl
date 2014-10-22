@@ -34,13 +34,13 @@ Hay dos formas posibles de ver el funcionamiento de la aplicación, una mediante
     user@ubuntu-hp:~/mytinyur$ bundle install
     ```
     
-    Una vez hecho todo lo anterior, procede a ejecutar *rake*, y por defecto se empezará a ejecutar.
+    Una vez hecho todo lo anterior, procede a ejecutar *rake server*, y por defecto se empezará a ejecutar.
     
     Una vez en ejecución, abre el navegador y escribe en la barra de direcciones *localhost:9292* y accederás a la web de la aplicación:
     
     ![ejemplo navegador](https://raw.githubusercontent.com/alu0100706468/mytinyurl/master/public/img/ejemplo.png)
     
-    Y ya, sólo has de dar autorizacion mediante google, y podrás ver el resultado.
+    Y ya, sólo has de dar autorizacion mediante Google, Facebook o Github y podrás ver el resultado.
     
     
 
