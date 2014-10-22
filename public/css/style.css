@@ -2,7 +2,7 @@
 
 #cabecera{
 	text-align: right;
-	padding-top:20px;
+	padding-top:15px;
 	padding-bottom:10px;
 	padding-right: 15px;
   	padding-left: 50px;
@@ -25,6 +25,7 @@
 	margin-right: 25px;
 	width: 45px;
 	height: 45px;
+	float: right;
 
 }
 
