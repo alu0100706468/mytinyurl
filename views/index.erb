@@ -25,13 +25,12 @@
 					<a href="/sign_google"><img src="/img/G.png" width="30px" height="30px"></a>
 				</div>
 				<%else%>
-				<p>
+				<div>
 					<img class="img-responsive img-circle foto" src="<%= current_user.imagen %>"> <br>
-					Hola, <%= current_user.name %> - 
-
-					<a href="/sign_out">Cerrar Sesión</a>
 					
-				</p>
+					<p class="col-xs-12 col-sm-12 col-lg-12" >Hola, <%= current_user.name %> - <a href="/sign_out">Cerrar Sesión</a> </p>
+					
+				</div>
 				<%end%>
 
 
