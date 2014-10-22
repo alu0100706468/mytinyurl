@@ -66,7 +66,6 @@ get '/auth/:name/callback' do
 	@user = User.first_or_create({ :uid => @auth["uid"]}, {
 	:uid => @auth["uid"],
 	:name => @auth["info"]["name"],
-	:nickname => @auth["info"]["nickname"],
 	:email => @auth["info"]["email"],
 	:imagen => @auth["info"]["image"],
 	:created_at => Time.now	})
@@ -121,9 +120,9 @@ post '/' do
 					pp @short_url
 					puts e.message
 				end
-			end
-			
-			if !current_user
+				@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
+
+			else
 				begin
 					if pers == ""
 						@short_url = ShortenedUrl.first_or_create(:uid => '0', :url => params[:url])
@@ -146,8 +145,22 @@ post '/' do
 			logger.info "Error! <#{params[:url]}> is not a valid URL"
 		end
 
-		
 		erb :index
 
-	
+end
+
+get '/:shortened' do
+	puts "inside get '/:shortened': #{params}"
+
+	short_url = ShortenedUrl.first(:id => params[:shortened].to_i(Base))
+
+	if short_url == nil
+		short_url = ShortenedUrl.first(:url2 => params[:shortened])
+	end
+
+	redirect short_url.url, 301
+end
+
+error do
+	erb :index
 end
