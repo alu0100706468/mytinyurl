@@ -43,6 +43,7 @@ use OmniAuth::Builder do
 end
 
 enable :sessions
+set :session_secret, '*&(^#234a)'
 
 helpers do
 	def current_user
@@ -52,7 +53,6 @@ end
 
 get '/' do
 	if current_user
-
 		@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
 	end
 	
@@ -71,6 +71,10 @@ get '/auth/:name/callback' do
 	:created_at => Time.now	})
 	
 	session[:user_id] = @user.id
+	redirect '/'
+end
+
+get '/auth/failure' do
 	redirect '/'
 end
 

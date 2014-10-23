@@ -8,9 +8,7 @@ class User
 		property :name, String
 		property :email, String
 		property :imagen, Text
-		property :created_at, DateTime
-		
-		has n, :shortenedurl
+		property :created_at, DateTime			
 end
 
 
@@ -20,7 +18,4 @@ class ShortenedUrl
 		property :uid, String
 		property :url, Text
 		property :url2, Text
-
-		belongs_to :user
-
 end
