@@ -41,6 +41,9 @@
           %br/
           %button.btn.btn-default.col-lg-offset-5.col-sm-offset-5.col-sm-2.col-xs-12.col-lg-2{:type => "submit", :value => "Shorten"} Enviar
         %br/
+        - if @error != nil 
+          #urls.col-sm-12.col-xs-12.col-lg-12
+            %p.short  La Url personalizada no es válida
         - if @short_url != nil
           #urls.col-sm-12.col-xs-12.col-lg-12
             - if @short_url.url2 != nil
