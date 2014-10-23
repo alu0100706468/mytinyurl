@@ -10,6 +10,7 @@ class User
 		property :imagen, Text
 		property :created_at, DateTime
 		
+		has n, :shortenedurl
 end
 
 
@@ -19,4 +20,7 @@ class ShortenedUrl
 		property :uid, String
 		property :url, Text
 		property :url2, Text
+
+		belongs_to :user
+
 end

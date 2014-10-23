@@ -111,7 +111,13 @@ post '/' do
 						@short_url = ShortenedUrl.first_or_create(:uid => current_user.id, :url => params[:url])
 					end
 					if pers != ""
-						@short_url = ShortenedUrl.first_or_create(:uid => current_user.id, :url => params[:url], :url2 =>params[:personal])	
+						consult = ShortenedUrl.first(:url2 => params[:personal])
+
+						if consult == nil
+							@short_url = ShortenedUrl.first_or_create(:uid => current_user.id, :url => params[:url], :url2 =>params[:personal])	
+						else
+							@error = true
+						end
 					end
 
 					@list = ShortenedUrl.all(:uid => current_user.id, :order => [:id.desc], :limit => 20)
@@ -128,7 +134,12 @@ post '/' do
 						@short_url = ShortenedUrl.first_or_create(:uid => '0', :url => params[:url])
 					end
 					if pers != ""
-						@short_url = ShortenedUrl.first_or_create(:uid => '0' , :url => params[:url], :url2 =>params[:personal])	
+						consult = ShortenedUrl.first(:url2 => params[:personal])
+						if consult == nil
+							@short_url = ShortenedUrl.first_or_create(:uid => '0' , :url => params[:url], :url2 =>params[:personal])	
+						else
+							@error = true
+						end
 					end
 
 
