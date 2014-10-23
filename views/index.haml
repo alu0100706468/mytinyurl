@@ -43,7 +43,8 @@
         %br/
         - if @error != nil 
           #urls.col-sm-12.col-xs-12.col-lg-12
-            %p.short  La Url personalizada no es válida
+            %p.short  
+              %strong ¡Url personalizada no válida!
         - if @short_url != nil
           #urls.col-sm-12.col-xs-12.col-lg-12
             - if @short_url.url2 != nil

@@ -30,8 +30,8 @@ require_relative 'model'
 
 DataMapper.finalize
 
-DataMapper.auto_migrate!
-#DataMapper.auto_upgrade!
+#DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 Base = 36
 
